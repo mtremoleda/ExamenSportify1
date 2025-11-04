@@ -1,0 +1,41 @@
+﻿<Window x:Class="InterficieSpotify.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:InterficieSpotify"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="Black"/>
+                <GradientStop Color="White" Offset="1"/>
+                <GradientStop Color="#FF3E4D7B" Offset="0"/>
+                <GradientStop Color="#FF3E557B" Offset="0"/>
+                <GradientStop Color="#FF35341A" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0*"/>
+        </Grid.ColumnDefinitions>
+        <Button x:Name="Cancons" Content="Songs" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="95,238,0,0" VerticalAlignment="Top" Click="Button_Click_1" Height="41" Width="140">
+            <Button.Background>
+                <ImageBrush/>
+            </Button.Background>
+        </Button>
+        <Button Content="Users" HorizontalAlignment="Center" Margin="0,238,0,0" VerticalAlignment="Top" Height="41" Width="140" Grid.Column="1" Click="Button_Click">
+            <Button.Background>
+                <ImageBrush/>
+            </Button.Background>
+        </Button>
+        <Button Content="PlayList" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="560,238,0,0" VerticalAlignment="Top" Height="41" Width="140" Click="Button_Click_2">
+            <Button.Background>
+                <ImageBrush/>
+            </Button.Background>
+        </Button>
+        <Label Content="Amb quina taula vols treballar?" HorizontalAlignment="Center" Margin="0,102,0,0" VerticalAlignment="Top" Width="284" Grid.Column="1" FontSize="20"/>
+    </Grid>
+</Window>

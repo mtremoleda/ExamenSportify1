@@ -1,0 +1,54 @@
+CREATE DATABASE Spotify;
+USE Spotify;
+
+
+CREATE TABLE Users (
+    Id UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
+    nom VARCHAR(50) NOT NULL,
+    contrasenya VARCHAR(255) NOT NULL,
+    salt VARCHAR(5) NOT NULL
+
+);
+
+
+CREATE TABLE Songs (
+    Id UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
+    titol VARCHAR(100) NOT NULL,
+    artista VARCHAR(100),
+    album VARCHAR(100),
+    durada Decimal(6,2)
+
+);
+
+
+CREATE TABLE Files_quality(
+    Id UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
+    id_song UNIQUEIDENTIFIER  NOT NULL,
+    format VARCHAR(10),
+    bitrate INT,
+    mida DECIMAL(6,2),
+    FOREIGN KEY (id_song) REFERENCES Songs(Id)
+        
+ 
+);
+
+
+CREATE TABLE Playlist(
+    Id UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
+    id_user UNIQUEIDENTIFIER  NOT NULL,
+    nom VARCHAR(100) NOT NULL,
+    FOREIGN KEY (id_user) REFERENCES Users(Id)
+        
+);
+
+
+
+
+CREATE TABLE Playlist_song (
+    Id UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
+    id_song UNIQUEIDENTIFIER  NOT NULL,
+    id_playlist UNIQUEIDENTIFIER  NOT NULL,
+    FOREIGN KEY (id_playlist) REFERENCES Playlist(Id),
+    FOREIGN KEY (id_song) REFERENCES Songs(Id)
+        
+);
