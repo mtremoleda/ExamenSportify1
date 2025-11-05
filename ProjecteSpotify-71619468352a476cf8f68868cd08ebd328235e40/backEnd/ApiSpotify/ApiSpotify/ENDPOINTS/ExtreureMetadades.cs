@@ -15,12 +15,12 @@ namespace ApiSpotify.ENDPOINTS
         public static void MapExtreureMetadadesEndpoints(this WebApplication app, DatabaseConnection dbConn)
         {
             // POST /cancons/upload
-            app.MapPost("/cancons/upload", async ([FromForm] IFormFileCollection files) =>
+            app.MapPost("/imatges/upload", async ([FromForm] IFormFileCollection files) =>
             {
                 if (files == null || files.Count == 0)
                     return Results.BadRequest(new { message = "No s'ha rebut cap fitxer." });
 
-                ConcurrentBag<Canco> canconsProcessades = new ConcurrentBag<Canco>();
+                ConcurrentBag<Imatge> canconsProcessades = new ConcurrentBag<Imatge>();
 
                 var options = new ParallelOptions { MaxDegreeOfParallelism = 2 };
 
@@ -47,18 +47,16 @@ namespace ApiSpotify.ENDPOINTS
                                 var tag = tagFile.Tag;
                                 var props = tagFile.Properties;
 
-                                var canco = new Canco
+                                var imatge = new Imatge
                                 {
                                     Id = Guid.NewGuid(),
-                                    Titol = string.IsNullOrWhiteSpace(tag.Title) ? Path.GetFileNameWithoutExtension(file.FileName) : tag.Title,
-                                    Artista = string.IsNullOrWhiteSpace(tag.Grouping) ? Path.GetFileNameWithoutExtension(file.FileName) : tag.Comment,
+                                    Titul = string.IsNullOrWhiteSpace(tag.Title) ? Path.GetFileNameWithoutExtension(file.FileName) : tag.Title,
+                                    Descripcio = string.IsNullOrWhiteSpace(tag.Comment) ? Path.GetFileNameWithoutExtension(file.FileName) : tag.Comment,
 
-                                   // Artista = (tag.Performers != null && tag.Performers.Length > 0) ? tag.Performers[0] : "Desconegut",
-                                    Album = string.IsNullOrWhiteSpace(tag.Album) ? "Desconegut" : tag.Album,
-                                    Durada = (int)props.PhotoWidth
+                                    
                                 };
 
-                                canconsProcessades.Add(canco);
+                                canconsProcessades.Add(imatge);
 
                                 //TODO: Es podria guardar canço a la base de dades
                             }
