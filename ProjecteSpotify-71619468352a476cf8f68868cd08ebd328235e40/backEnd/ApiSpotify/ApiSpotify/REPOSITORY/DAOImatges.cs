@@ -37,7 +37,7 @@ namespace ApiSpotify.REPOSITORY
 
             dbconn.Open();
 
-            string sql = "SELECT Id, Titul, Descripcio FROM Imatge";
+            string sql = "SELECT Id, Titul, Descripcio FROM Imatges";
 
             using SqlCommand cmd = new SqlCommand(sql, dbconn.sqlConnection);
             using SqlDataReader reader = cmd.ExecuteReader();
@@ -90,7 +90,7 @@ namespace ApiSpotify.REPOSITORY
         {
             dbConn.Open();
 
-            string sql = @"UPDATE Imatge
+            string sql = @"UPDATE Imatges
                            SET Titul = @titul,
                                Descripcio = @descripcio
                            WHERE Id = @Id";
