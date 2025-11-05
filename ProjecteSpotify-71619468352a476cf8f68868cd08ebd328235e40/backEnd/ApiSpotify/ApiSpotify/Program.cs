@@ -66,6 +66,7 @@ if (webApp.Environment.IsDevelopment())
 
 // Registra tots els endpoints (els fitxers han d'existir o ser placeholders)
 webApp.MapCancoEndpoints(dbConn);
+webApp.MapPerfilEndpoints(dbConn);
 webApp.MapUsuarisEndpoints(dbConn);
 webApp.MapLlistesReproduccionsEndpoints(dbConn);
 webApp.MapLlistareproduccioCancoEndpointsEndpoints(dbConn);
