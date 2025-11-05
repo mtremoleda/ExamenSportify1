@@ -82,14 +82,13 @@ namespace ApiSpotify.REPOSITORY
             dbConn.Open();
 
             string sql = @"UPDATE Playlist
-                           SET Nom = @nom,
-                            id_user = @id_user,
+                           SET Nom = @nom
                            WHERE Id = @Id";
 
             using SqlCommand cmd = new SqlCommand(sql, dbConn.sqlConnection);
             cmd.Parameters.AddWithValue("@Id", llista.Id);
             cmd.Parameters.AddWithValue("@nom", llista.Nom);
-            cmd.Parameters.AddWithValue("@id_user", llista.IdUsuari);
+            
 
             int rows = cmd.ExecuteNonQuery();
             Console.WriteLine($"{rows} fila actualitzada.");
