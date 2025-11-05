@@ -51,11 +51,11 @@ namespace ApiSpotify.ENDPOINTS
                                 {
                                     Id = Guid.NewGuid(),
                                     Titol = string.IsNullOrWhiteSpace(tag.Title) ? Path.GetFileNameWithoutExtension(file.FileName) : tag.Title,
-                                    Artista = string.IsNullOrWhiteSpace(tag.Copyright) ? Path.GetFileNameWithoutExtension(file.FileName) : tag.Copyright,
+                                    Artista = string.IsNullOrWhiteSpace(tag.Grouping) ? Path.GetFileNameWithoutExtension(file.FileName) : tag.Comment,
 
                                    // Artista = (tag.Performers != null && tag.Performers.Length > 0) ? tag.Performers[0] : "Desconegut",
                                     Album = string.IsNullOrWhiteSpace(tag.Album) ? "Desconegut" : tag.Album,
-                                    Durada = (decimal)props.Description.Length
+                                    Durada = (int)props.PhotoWidth
                                 };
 
                                 canconsProcessades.Add(canco);
